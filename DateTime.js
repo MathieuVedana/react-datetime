@@ -376,9 +376,11 @@ var Datetime = createClass({
 	},
 
 	closeCalendar: function() {
-		this.setState({ open: false }, function () {
-			this.props.onBlur( this.state.selectedDate || this.state.inputValue );
-		});
+		if ( this.state.open ) {
+			this.setState({ open: false }, function () {
+				this.props.onBlur( this.state.selectedDate || this.state.inputValue );
+			});
+		}
 	},
 
 	handleClickOutside: function() {
